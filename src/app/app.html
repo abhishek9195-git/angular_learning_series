@@ -1,1 +1,24 @@
+<h1>Login form</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="control">
+    <label for="email">Email</label> <br>
+    <input type="text" formControlName="email">
+  </div>
+
+  <div class="control">
+    <label for="password">Password</label> <br>
+    <input type="text" formControlName="password">
+
+
+    @if (loginForm.get('password')?.dirty && !loginForm.get('password')?.valid &&
+    loginForm.get('password')?.hasError('serverError')) {
+    <p class="error">{{loginForm.get('password')?.getError('serverError')}}</p>
+    }
+  </div>
+
+  <div class="control">
+    <button type="submit">Login</button>
+  </div>
+</form>
 <router-outlet />
