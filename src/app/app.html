@@ -1,1 +1,37 @@
+<form (submit)="onSubmit($event)">
+  <div class="field">
+    <label for="email">Email</label><br>
+    <input type="text" [formField]="loginForm.email">
+
+    @if(loginForm.email().dirty() && loginForm.email().invalid()) {
+      @for(error of loginForm.email().errors(); track $index) {
+        @if(error.kind === "minLength") {
+          <div class="error">Email must be of atleast 8 characters.</div>
+        }
+      }
+    }
+  </div>
+
+  <div class="field">
+    <label for="password">Password</label><br>
+    <input type="password" id="password" [formField]="loginForm.password">
+
+    @if (loginForm.password().dirty() && loginForm.password().invalid()) {
+    @for (error of loginForm.password().errors(); track $index) {
+    @if (error.kind === 'minLength') {
+    <div class="error">Password must be of atleast 8 characters.</div>
+    }
+    }
+    }
+
+  </div>
+
+
+
+  <div class="submit-btn">
+    <button type="submit">Login</button>
+  </div>
+
+</form>
+
 <router-outlet />
