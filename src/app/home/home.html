@@ -1,0 +1,9 @@
+<h1>Welcome to dashboard</h1>
+<form>
+    <label for="Search">Search</label><br>
+    <input type="text" [formField]="searchForm.searchTerm">
+</form>
+
+@for (item of fruits | filter: searchForm.searchTerm().value(); track $index) {
+    <p>{{item}}</p>
+}
